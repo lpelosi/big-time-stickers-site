@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Big Time Stickers — Import your whole sticker drawer from a Mac</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Import your whole sticker drawer</h1>
+  <p class="tagline">One-step import of every iMessage sticker, using a Mac signed into the same Apple Account.</p>
+
+  <p>iOS does not let any app list your sticker drawer, so on the phone stickers come over one tap at a time.
+  A Mac with <strong>Messages in iCloud</strong> turned on keeps a synced copy of the whole drawer. This script
+  copies that drawer into a folder in iCloud Drive, and the app imports the folder in one go.</p>
+
+  <h2>Steps</h2>
+  <ol>
+    <li>On both the iPhone and the Mac turn on <strong>Messages in iCloud</strong>
+      (iPhone: Settings → your name → iCloud → Messages. Mac: System Settings → Apple Account → iCloud → Messages).
+      Give it a few minutes to sync.</li>
+    <li>On the Mac, download <a href="export-imessage-stickers.sh" download>export-imessage-stickers.sh</a>, then open Terminal and run:
+      <pre><code>bash ~/Downloads/export-imessage-stickers.sh</code></pre>
+      If macOS says it cannot read the sticker store, give Terminal <strong>Full Disk Access</strong>
+      (System Settings → Privacy &amp; Security → Full Disk Access) and run it again.</li>
+    <li>It writes an <strong>iMessage Stickers Export</strong> folder to iCloud Drive and opens it in Finder.
+      Give iCloud a minute to upload.</li>
+    <li>On the iPhone: Big Time Stickers → Import → Import from iMessage → <strong>Import a Whole Folder</strong>
+      → iCloud Drive → iMessage Stickers Export. Done.</li>
+  </ol>
+
+  <h2>What the script does</h2>
+  <ul>
+    <li>Reads the sticker daemon's synced database on the Mac. It only ever reads: the database is copied to a temporary folder first and the copy is queried.</li>
+    <li>Writes one full-size file per sticker (HEIC, or animated HEICS for Live Stickers) in drawer order, skipping byte-identical duplicates.</li>
+    <li>Nothing leaves the Mac except through your own iCloud Drive. No network calls.</li>
+    <li>No iCloud Drive? It writes to the Desktop instead; AirDrop the folder to the iPhone and import it from Files.</li>
+  </ul>
+
+  <p>Plain bash, no dependencies beyond what macOS ships. Read it before you run it:
+  <a href="export-imessage-stickers.sh">view the script</a>.</p>
+
+  <p><a href="index.html">Back to support</a> · <a href="privacy.html">Privacy policy</a></p>
+</main>
+</body>
+</html>

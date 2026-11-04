@@ -7,3 +7,7 @@ h2 { font-size: 1.25rem; margin-top: 2em; }
 a { color: #e4572e; }
 ul { padding-left: 1.2em; }
 li { margin: 0.4em 0; }
+
+pre { background: #f3f3f5; padding: 0.8rem 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.9rem; }
+code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+ol li { margin-bottom: 0.5rem; }
